@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Recording Studio homepage">
+	<title>Waves</title>
+
+	<!-- Fonts -->
+	<!-- <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet"> -->
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+	<!-- Libraries -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+		integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+		integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+		integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Coiny&display=swap" rel="stylesheet">
+
+	<!-- Personal -->
+	<link rel="stylesheet" href="css/styles.css">
+	<script src="js/scripts.js"></script>
+
+</head>
+
+<body>
+	<!-- Skip links -->
+	<nav aria-label="Skip links">
+		<ul class="off-screen">
+			<li>
+				<a href="#a11y-primary-nav" class="skip-link">Skip to primary navigation</a>
+			</li>
+			<li>
+				<a href="#a11y-main-content" class="skip-link">Skip to main content</a>
+			</li>
+		</ul>
+	</nav>
+
+	<header class="container-fluid hero">
+		<div class="container-lg">
+			<nav class="d-flex flex-column flex-sm-row justify-content-around my-3" id="a11y-primary-nav" tabindex="-1">
+				<div class="d-flex flex-column flex-sm-row col-sm-9 text-center">
+					<a href="#" aria-label="logo">
+						<img src="images/company_logo.svg" class="mx-2 mt-3" height="50px" width="100px" alt="">
+						<img src="images/company_name.svg" class="mx-2 mt-3" height="40px" width="200px" alt="">
+					</a>
+				</div>
+				<div class="menubtn d-sm-none mt-4" data-toggle="collapse" data-target="#navbarContent"
+					onclick="this.classList.toggle('active')">
+				</div>
+				<div class="collapse navbar-collapse d-sm-flex" id="navbarContent">
+					<ul class="navbar-nav text-uppercase font-weight-bold flex-sm-row ml-auto mt-3">
+						<li class="navbar-item">
+							<a class="nav-link mx-4 mt-2 wave" href="#">Home</a>
+						</li>
+						<li class="navbar-item">
+							<a class="nav-link mx-4 mt-2" href="#">Gallery</a>
+						</li>
+						<li class="navbar-item">
+							<a class="nav-link mx-4 mt-2" href="#">Booking</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</header>
+
+	<main id="a11y-main-content" tabindex="-1">
+
+		<div class="card gray-bg align-items-center mx-auto m-5" style="width: 18rem;">
+			<img src="images/studio1.jpg" class="card-img-top" alt="">
+			<div class="card-body">
+				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			</div>
+			<button class="btn m-3">Button</button>
+		</div>
+
+	</main>
+
+	<!-- Footer -->
+	<footer class="page-footer dark-bg pt-4">
+		<div class="container-lg">
+			<div class="d-flex flex-column flex-sm-row justify-content-between align-items-center my-5">
+				<div class="mt-4">
+					<a href="#" aria-label="logo">
+						<img src="images/company_logo.svg" class="mx-2" height="50px" width="100px" alt="">
+						<img src="images/company_name.svg" class="mx-2 d-md-inline-block d-none" height="40px" width="200px" alt="">
+					</a>
+				</div>
+				<div class="d-flex mt-4">
+					<div class="row">
+						<ul class="list-group list-group-horizontal list-unstyled">
+							<li class="mx-2">
+								<a class="text-decoration-none" href="https://www.facebook.com/HolbertonSchool/" aria-label="Facebook">
+									<i class="fa fa-facebook social" aria-hidden="true"></i>
+								</a>
+							</li>
+							<li class="mx-2">
+								<a class="text-decoration-none" href="https://twitter.com/holbertonschool" aria-label="Twitter">
+									<i class="social fa fa-twitter" aria-hidden="true"></i>
+								</a>
+							</li>
+							<li class="mx-2">
+								<a class="text-decoration-none" href="https://www.instagram.com/holbertonschool/" aria-label="Instagram">
+									<i class="social fa fa-instagram" aria-hidden="true"></i>
+								</a>
+							</li>
+							<li class="mx-2">
+								<a class="text-decoration-none" href="https://www.spotify.com/us/" aria-label="Spotify">
+									<i class="social fa fa-spotify" aria-hidden="true"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<p class="text-center wave small pb-5 mb-0">©El Rio Vista Recording Studio 2021</p>
+	</footer>
+</body>
+
+</html>
