@@ -5,10 +5,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Recording Studio homepage">
-	<title>Waves</title>
+	<title>El Rio Vista Recording Studio</title>
 
 	<!-- Fonts -->
-	<!-- <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet"> -->
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -30,12 +29,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
 		integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Coiny&display=swap" rel="stylesheet">
 
 	<!-- Personal -->
 	<link rel="stylesheet" href="css/styles.css">
@@ -56,17 +51,30 @@
 		</ul>
 	</nav>
 
-	<header class="container-fluid hero">
+	<header class="container-fluid" id="hero">
 		<div class="container-lg">
-			<nav class="d-flex flex-column flex-sm-row justify-content-around my-3" id="a11y-primary-nav" tabindex="-1">
-				<div class="d-flex flex-column flex-sm-row col-sm-9 text-center">
+			<nav class="d-flex flex-column flex-sm-row text-center mb-5 pt-3 pb-5" id="a11y-primary-nav" tabindex="-1">
+				<div class="d-flex flex-column flex-sm-row col-sm-6">
 					<a href="#" aria-label="logo">
 						<img src="images/company_logo.svg" class="mx-2 mt-3" height="50px" width="100px" alt="">
 						<img src="images/company_name.svg" class="mx-2 mt-3" height="40px" width="200px" alt="">
 					</a>
 				</div>
-				<div class="menubtn d-sm-none mt-4" data-toggle="collapse" data-target="#navbarContent"
-					onclick="this.classList.toggle('active')">
+				<div class="menubtn d-sm-none mt-4" data-toggle="collapse" data-target="#navbarContent" onclick="this.classList.toggle('active')">
+					<svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 200 200">
+						<g stroke-width="6.5" stroke-linecap="round">
+							<path d="M72 82.286h28.75" fill="#009100" fill-rule="evenodd" stroke="#fff" />
+							<path
+								d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554"
+								fill="none" stroke="#fff" />
+							<path d="M72 125.143h28.75" fill="#009100" fill-rule="evenodd" stroke="#fff" />
+							<path
+								d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554"
+								fill="none" stroke="#fff" />
+							<path d="M100.75 82.286h28.75" fill="#009100" fill-rule="evenodd" stroke="#fff" />
+							<path d="M100.75 125.143h28.75" fill="#009100" fill-rule="evenodd" stroke="#fff" />
+						</g>
+					</svg>
 				</div>
 				<div class="collapse navbar-collapse d-sm-flex" id="navbarContent">
 					<ul class="navbar-nav text-uppercase font-weight-bold flex-sm-row ml-auto mt-3">
@@ -82,12 +90,39 @@
 					</ul>
 				</div>
 			</nav>
+
+		</div>
+		<div class="container-lg d-flex justify-content-center my-5 py-5">
+			<div class="column wave">
+				<div>
+					<svg class="display-4" version="1.1" xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 450 120"
+						enable-background="new 0 0 350 60" xml:space="preserve">
+						<defs>
+							<pattern id="water" width=".25" height="1.1" patternContentUnits="objectBoundingBox">
+								<path fill="#0cd1bd"
+									d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z" />
+							</pattern>
+							<text id="text" class="mx-auto" transform="matrix(1 0 0 1 0 80)">EL RIO VISTA</text>
+							<mask id="text_mask">
+								<use x="0" y="0" xlink:href="#text" opacity="1" fill="#0cd1bd" />
+							</mask>
+						</defs>
+						<use x="0" y="0" xlink:href="#text" fill="#d4fffb" />
+						<rect class="water-fill" mask="url(#text_mask)" fill="url(#water)" x="0" y="0" width="800" height="100" />
+					</svg>
+				</div>
+				<div class="mb-5 pb-5 display-4">
+					<h1 class="tag pb-5">RECORDING STUDIO</h1>
+					<h2 class="tag mb-5">Dreams Come True</h2>
+				</div>
+			</div>
 		</div>
 	</header>
 
 	<main id="a11y-main-content" tabindex="-1">
 
-		<div class="card gray-bg align-items-center mx-auto m-5" style="width: 18rem;">
+		<div class="card dark-bg align-items-center mx-auto m-5" style="width: 18rem;">
 			<img src="images/studio1.jpg" class="card-img-top" alt="">
 			<div class="card-body">
 				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -116,7 +151,8 @@
 								</a>
 							</li>
 							<li class="mx-2">
-								<a class="text-decoration-none" href="https://twitter.com/holbertonschool" aria-label="Twitter">
+								<a class="text-decoration-none" href="https://twitter.com/holbertonschool"
+									aria-label="Twitter">
 									<i class="social fa fa-twitter" aria-hidden="true"></i>
 								</a>
 							</li>
@@ -135,7 +171,7 @@
 				</div>
 			</div>
 		</div>
-		<p class="text-center wave small pb-5 mb-0">©El Rio Vista Recording Studio 2021</p>
+		<p class="text-center small pb-5 mb-0">©El Rio Vista Recording Studio 2021</p>
 	</footer>
 </body>
 
