@@ -8,6 +8,7 @@
 	2. Body
 		- Hero
 			- Wave Animation
+		- Albums
 		- Footer
 		- Icons
 		- Menu Button
@@ -95,6 +96,26 @@ a:hover {
 
 .dark {
 	color: var(--color-dark);
+}
+
+/* Animation */
+
+.float {
+	transform: translatey(0px);
+	animation: float 6s ease-in-out infinite;
+}
+
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
 }
 
 /*** 2. BODY ***/

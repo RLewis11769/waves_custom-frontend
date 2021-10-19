@@ -19,8 +19,8 @@ $(document).ready(function () {
 });
 
 const singleCarousel = {
-	autoplay: false,
+	autoplay: true,
 	infinite: true,
 	arrows: false,
-	dots: true,
+	dots: true
 }
