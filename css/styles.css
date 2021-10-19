@@ -145,6 +145,28 @@ a:hover {
   }
 }
 
+/* Hero Section
+   ============================= */
+
+.opacity {
+	opacity: .5;
+}
+
+.gradient {
+	background-image:
+	linear-gradient(to bottom, var(--color-white), var(--color-primary));
+}
+
+.gradient:hover, .gradient:focus {
+	background-image:
+	linear-gradient(to bottom, var(--color-white), var(--color-dark));
+}
+
+.bord {
+	border: 0.5rem solid var(--color-primary)!important;
+	border-radius: 0;
+}
+
 /* Footer
    ============================= */
 
