@@ -15,7 +15,12 @@ $(document).ready(function () {
 
 	changeBG();
 	setInterval(changeBG, 5000);
-
+	$('.single').slick(singleCarousel);
 });
 
-
+const singleCarousel = {
+	autoplay: false,
+	infinite: true,
+	arrows: false,
+	dots: true,
+}

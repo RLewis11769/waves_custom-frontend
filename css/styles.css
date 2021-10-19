@@ -145,7 +145,7 @@ a:hover {
   }
 }
 
-/* Hero Section
+/* Services Section
    ============================= */
 
 .opacity {
@@ -165,6 +165,27 @@ a:hover {
 .bord {
 	border: 0.5rem solid var(--color-primary)!important;
 	border-radius: 0;
+}
+
+/* Albums Section
+   ============================= */
+
+.square {
+	height: 15rem;
+	width: 15rem;
+}
+
+.slick-dots li button:before {
+	background-color: var(--color-dark);
+	color: var(--color-white);
+	opacity: 1;
+	font-size: 1rem;
+}
+
+.slick-dots li.slick-active button:before {
+	background-color: var(--color-dark);
+	color: var(--color-pop);
+	opacity: 1;
 }
 
 /* Footer
