@@ -46,6 +46,7 @@ body {
 button {
 	background-color: var(--color-pop)!important;
 	color: var(--color-primary);
+	border: none;
 }
 
 /* Links */
@@ -311,3 +312,69 @@ path:nth-child(6) {
 .active path:nth-child(6) {
 	transform: translateX(9px) translateY(1px) rotate(45deg);
 }
+
+
+
+
+
+
+form .error {
+	color: #ff0000;
+	position: relative;
+	top: 0;
+}
+
+form.wrap div {
+	position: relative;
+}
+
+label {
+	position: absolute;
+	background-color: var(--color-primary);
+	transition: top .2s ease-in-out, font-size .2s ease-in-out;
+}
+
+.active {
+	top: -25px;
+	font-size: 1rem;
+}
+
+input, textarea {
+	border: 1px solid var(--color-white);
+	background-color: var(--color-primary);
+	color: var(--color-white);
+}
+
+input:focus, textarea:focus {
+	outline: none;
+	border: 3px solid var(--color-white);
+}
+
+
+
+
+
+
+/* 
+.book {
+	background-color: var(--color-dark);
+	border: var(--color-white) solid 1px;
+}
+
+.book:focus {
+	background-color: var(--color-pop);
+	border: var(--color-pop) solid 3px;
+}
+
+.book:hover {
+	border: var(--color-white) solid 3px;
+	color: var(--color-white);
+}
+
+::placeholder {
+	color: var(--color-white);
+}
+
+textarea {
+	color: var(--color-white);
+} */
