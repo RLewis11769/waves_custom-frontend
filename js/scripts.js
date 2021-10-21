@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-	// Execute background change every 5 seconds
+	// Execute background change on header/hero banner every 5 seconds
 	changeBG();
 	setInterval(changeBG, 5000);
 
@@ -8,10 +8,11 @@ $(document).ready(function () {
 	$('.single').slick(singleCarousel);
 
 	// Add validation and effect to form on "contact" page
-	validate();
+	validateForm();
 	inputEffect('input');
 	inputEffect('textarea');
 });
+
 
 
 // Settings for Slick carousel
@@ -42,9 +43,9 @@ function changeBG() {
 }
 
 
-function validate() {
+function validateForm() {
+	// Add validation via jQuery Validate
 	$('form').validate({
-		// Add validation via jQuery Validate
 		rules: {
 			// Define rules to be validated for each "name" in form
 			first: 'required',
@@ -60,27 +61,28 @@ function validate() {
 		},
 		// Specify validation error messages
 		messages: {
-			first: 'Please enter a valid contact name',
-			last: 'Please enter a valid contact name',
+			first: 'Please enter a valid name',
+			last: 'Please enter a valid name',
 			phone: 'Please enter a valid phone number',
-			email: 'Please enter a valid email'
+			email: {
+				required: 'Please enter an email',
+				email: 'Please enter a valid email'
+			}
 		},
 		// Make sure the data in the form is submitted
-		submitHandler: function (form) {
-			form.submit();
-		}
+		submitHandler: (form)=> (form.submit())
 	});
 }
 
 
-function inputEffect (input) {
+function inputEffect(input) {
 	// Add effect on form label via addition/removal of "active" class
-	$(input).on('focusin', function () {
+	$(input).on('focusin', ()=> {
 		// Whatever input is focused on, add class to label in that div
 		$(this).parent().find('label').addClass('active');
 	});
 
-	$(input).on('focusout', function () {
+	$(input).on('focusout', ()=> {
 		// If input has been clicked out of but no value has been input, remove class
 		if (!input.value) {
 			$(this).parent().find('label').removeClass('active');
