@@ -4,8 +4,7 @@ $(document).ready(function () {
 	changeBG();
 	setInterval(changeBG, 5000);
 
-	// Use Slick carousel settings defined below for any single-item carousels
-	$('.single').slick(singleCarousel);
+	APPController.init();
 
 	// Add validation and effect to form on "contact" page
 	validateForm();
@@ -89,3 +88,146 @@ function inputEffect(input) {
 		}
 	});
 }
+
+const APIController = (function () {
+
+    const clientId = '5010e2be878d4c8cb3c766e8e367431b';
+    const clientSecret = 'dc1997ba8b8042438914d7e8c2e662d9';
+    const playlistID = '6MfkoiUr4P9iDLN5VZSvQN';
+
+    // private methods
+    const _getToken = async () => {
+
+        const result = await fetch('https://accounts.spotify.com/api/token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
+            },
+            body: 'grant_type=client_credentials'
+        });
+
+        const data = await result.json();
+        return data.access_token;
+    }
+
+    const _getPlaylist = async (token) => {
+
+        const result = await fetch(`https://api.spotify.com/v1/playlists/${playlistID}`, {
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + token }
+        });
+
+        const data = await result.json();
+        return data;
+    }
+
+    const _getTrack = async (token, trackID) => {
+        const limit = 10;
+        const result = await fetch(`https://api.spotify.com/v1/tracks/${trackID}?limit=${limit}`, {
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + token }
+        });
+
+        const data = await result.json();
+        return data.name;
+    }
+
+    const _getArtists = async (token, artistsIDs) => {
+        const result = await fetch(`https://api.spotify.com/v1/artists?ids=${artistsIDs}`, {
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + token }
+        });
+
+        const data = await result.json();
+        return data;
+    }
+
+    return {
+        getToken() {
+            return _getToken();
+        },
+        getPlaylist(token) {
+            return _getPlaylist(token);
+        },
+        getTrack(token, playlistId) {
+            return _getTrack(token, playlistId);
+        },
+        getArtists(token, artists_ids) {
+            return _getArtists(token, artists_ids);
+        }
+    }
+})();
+
+
+// UI Module
+const UIController = (function () {
+
+    const Token = '#hidden_token';
+
+    //public methods
+    return {
+        storeToken(token) {
+            document.querySelector(Token).value = token;
+        },
+        getStoredToken() {
+            return {
+                token: document.querySelector(Token).value
+            }
+        }
+    }
+
+})();
+
+const APPController = (function (UICtrl, APICtrl) {
+
+    const loadPlaylist = async () => {
+        //get the token
+        const token = await APICtrl.getToken();
+        //store the token onto the page
+        UICtrl.storeToken(token);
+        const playlist = await APICtrl.getPlaylist(token);
+        let artists = '';
+        for (let track of playlist.tracks.items) {
+            artists += `${track.track.artists[0].id},`;
+        }
+        
+        artists = artists.slice(0, -1);
+        loadArtists(artists);
+    }
+
+    const loadTrack = async (trackID) => {
+        //get the token
+        const token = await APICtrl.getToken();
+        //store the token onto the page
+        UICtrl.storeToken(token);
+        const track = await APICtrl.getTrack(token, trackID);
+    }
+
+    function addArtistData (data) {
+        $('#album').prepend(`<div class="flex-column">
+            <img class="square mx-auto" src="${data.images[0].url}" alt="album cover">
+            <h3 class="py-4">${data.name}</h3>
+        </div>`);
+    }
+
+    const loadArtists = async (artistsIDs) => {
+        //get the token
+        const token = await APICtrl.getToken();
+        //store the token onto the page
+        UICtrl.storeToken(token);
+        const artists = await APICtrl.getArtists(token, artistsIDs);
+        for (let artist of artists.artists) {
+            addArtistData(artist);
+        }
+		$('#album').slick(singleCarousel);
+    }
+
+    return {
+        init() {
+            console.log('App is starting');
+            loadPlaylist();
+        }
+    }
+
+})(UIController, APIController);

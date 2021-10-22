@@ -51,13 +51,16 @@
 
 	<header class="container-fluid" id="hero">
 		<div class="container-lg pb-5">
+			<!-- Navbar -->
 			<nav class="d-flex flex-column flex-sm-row text-center mb-5 pt-3 pb-5" id="a11y-primary-nav" tabindex="-1">
+				<!-- Company name/logo -->
 				<div class="d-flex flex-column flex-sm-row col-sm-6">
 					<a href="#" aria-label="logo">
 						<img src="images/company_logo.svg" class="mx-2 mt-3" height="50px" width="100px" alt="">
 						<img src="images/company_name.svg" class="mx-2 mt-3" height="40px" width="200px" alt="">
 					</a>
 				</div>
+				<!-- Toggle button/Hamburger menu -->
 				<div class="menubtn d-sm-none mt-4" data-toggle="collapse" data-target="#navbarContent"
 					onclick="this.classList.toggle('active')">
 					<svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 200 200">
@@ -75,6 +78,7 @@
 						</g>
 					</svg>
 				</div>
+				<!-- Internal Nav Links -->
 				<div class="collapse navbar-collapse d-sm-flex" id="navbarContent">
 					<ul class="navbar-nav text-uppercase font-weight-bold flex-sm-row ml-auto mt-3">
 						<li class="navbar-item">
@@ -89,10 +93,11 @@
 					</ul>
 				</div>
 			</nav>
-
 		</div>
+		<!-- Hero -->
 		<div class="container-lg d-flex justify-content-center my-5 py-5">
 			<div class="column float wave pb-5 mb-5">
+				<!-- Text -->
 				<div>
 					<svg class="display-4" version="1.1" xmlns="http://www.w3.org/2000/svg"
 						xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 450 120"
@@ -121,6 +126,7 @@
 
 	<main id="a11y-main-content" tabindex="-1">
 
+		<!-- Services Section -->
 		<section class="container-fluid pb-3">
 			<div class="container-lg text-center py-3">
 				<h1 class="my-5">Services</h1>
@@ -158,13 +164,14 @@
 			</div>
 		</section>
 
+		<!-- Results Section -->
 		<section class="container-fluid dark-bg pb-5">
 			<div class="container-lg text-center py-5">
 				<h1 class="my-5">Results</h1>
 				<h2 class="lead my-5">The environment you make music in matters. That's why working with El Rio Vista is
 					different. Check out some of the albums recorded in our studios.</h2>
-				<div class="single">
-					<div class="flex-column">
+				<div id="album">
+					<!-- <div class="flex-column">
 						<img class="square mx-auto" src="images/dark_wave.jpg" alt="album cover">
 						<h3 class="py-4">Beyoncé</h3>
 					</div>
@@ -183,7 +190,7 @@
 					<div class="flex-column">
 						<img class="square mx-auto" src="images/dark_wave.jpg" alt="album cover">
 						<h3 class="py-4">The Hu</h3>
-					</div>
+					</div> -->
 				</div>
 				<div class="pb-5"></div>
 			</div>
@@ -234,6 +241,10 @@
 		</div>
 		<p class="text-center small pb-5 mb-0">©El Rio Vista Recording Studio 2021</p>
 	</footer>
+
+	<form action="">
+		<input type="hidden" id='hidden_token'>
+	</form>
 </body>
 
 </html>
