@@ -16,6 +16,7 @@ $(document).ready(function () {
 const singleCarousel = {
 	autoplay: true,
 	infinite: true,
+	autoplaySpeed: 2000,
 	arrows: false,
 	dots: true
 }
@@ -60,7 +61,10 @@ function validateForm() {
 		messages: {
 			first: 'Please enter a valid name',
 			last: 'Please enter a valid name',
-			phone: 'Please enter a valid phone number',
+			phone: {
+				required: 'Please enter a phone number',
+				tel: 'Please enter a valid phone number'
+			},
 			email: {
 				required: 'Please enter an email',
 				email: 'Please enter a valid email'
