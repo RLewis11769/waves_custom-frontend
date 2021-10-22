@@ -4,12 +4,10 @@ $(document).ready(function () {
 	changeBG();
 	setInterval(changeBG, 5000);
 
-	APPController.init();
-
-	// Add validation and effect to form on "contact" page
+	// Add validation to form on "contact" page
 	validateForm();
-	inputEffect('input');
-	inputEffect('textarea');
+
+	APPController.init();
 });
 
 
@@ -69,128 +67,111 @@ function validateForm() {
 			}
 		},
 		// Make sure the data in the form is submitted
-		submitHandler: (form)=> (form.submit())
+		submitHandler: (form) => (form.submit())
 	});
 }
 
-
-function inputEffect(input) {
-	// Add effect on form label via addition/removal of "active" class
-	$(input).on('focusin', ()=> {
-		// Whatever input is focused on, add class to label in that div
-		$(this).parent().find('label').addClass('active');
-	});
-
-	$(input).on('focusout', ()=> {
-		// If input has been clicked out of but no value has been input, remove class
-		if (!input.value) {
-			$(this).parent().find('label').removeClass('active');
-		}
-	});
-}
 
 const APIController = (function () {
 
-    const clientId = '5010e2be878d4c8cb3c766e8e367431b';
-    const clientSecret = 'dc1997ba8b8042438914d7e8c2e662d9';
-    const playlistID = '6MfkoiUr4P9iDLN5VZSvQN';
+	const clientId = '5010e2be878d4c8cb3c766e8e367431b';
+	const clientSecret = 'dc1997ba8b8042438914d7e8c2e662d9';
+	const playlistID = '6MfkoiUr4P9iDLN5VZSvQN';
 
-    // private methods
-    const _getToken = async () => {
+	// private methods
+	const _getToken = async () => {
+		const result = await fetch('https://accounts.spotify.com/api/token', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+				'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
+			},
+			body: 'grant_type=client_credentials'
+		});
 
-        const result = await fetch('https://accounts.spotify.com/api/token', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
-            },
-            body: 'grant_type=client_credentials'
-        });
+		const data = await result.json();
+		return data.access_token;
+	}
 
-        const data = await result.json();
-        return data.access_token;
-    }
+	const _getPlaylist = async (token) => {
+		const result = await fetch(`https://api.spotify.com/v1/playlists/${playlistID}`, {
+			method: 'GET',
+			headers: { 'Authorization': 'Bearer ' + token }
+		});
 
-    const _getPlaylist = async (token) => {
+		const data = await result.json();
+		return data;
+	}
 
-        const result = await fetch(`https://api.spotify.com/v1/playlists/${playlistID}`, {
-            method: 'GET',
-            headers: { 'Authorization': 'Bearer ' + token }
-        });
+	const _getArtists = async (token, artistsIDs) => {
+		const result = await fetch(`https://api.spotify.com/v1/artists?ids=${artistsIDs}`, {
+			method: 'GET',
+			headers: { 'Authorization': 'Bearer ' + token }
+		});
 
-        const data = await result.json();
-        return data;
-    }
+		const data = await result.json();
+		return data;
+	}
 
-    const _getArtists = async (token, artistsIDs) => {
-        const result = await fetch(`https://api.spotify.com/v1/artists?ids=${artistsIDs}`, {
-            method: 'GET',
-            headers: { 'Authorization': 'Bearer ' + token }
-        });
-
-        const data = await result.json();
-        return data;
-    }
-
-    return {
-        getToken() {
-            return _getToken();
-        },
-        getPlaylist(token) {
-            return _getPlaylist(token);
-        },
-        getArtists(token, artists_ids) {
-            return _getArtists(token, artists_ids);
-        }
-    }
+	return {
+		getToken() {
+			return _getToken();
+		},
+		getPlaylist(token) {
+			return _getPlaylist(token);
+		},
+		getArtists(token, artists_ids) {
+			return _getArtists(token, artists_ids);
+		}
+	}
 })();
 
 
 // UI Module
 const UIController = (function () {
 
-    const Token = '#hidden_token';
+	const Token = '#hidden_token';
 
-    //public methods
-    return {
-        storeToken(token) {
-            document.querySelector(Token).value = token;
-        },
-        getStoredToken() {
-            return {
-                token: document.querySelector(Token).value
-            }
-        }
-    }
+	//public methods
+	return {
+		storeToken(token) {
+			document.querySelector(Token).value = token;
+		},
+		getStoredToken() {
+			return {
+				token: document.querySelector(Token).value
+			}
+		}
+	}
 
 })();
 
 const APPController = (function (UICtrl, APICtrl) {
 
-    const loadPlaylist = async () => {
-        //get the token
-        const token = await APICtrl.getToken();
-        //store the token onto the page
-        UICtrl.storeToken(token);
-        const playlist = await APICtrl.getPlaylist(token);
-        let artists = '';
-        for (let track of playlist.tracks.items) {
-            artists += `${track.track.artists[0].id},`;
+	const loadPlaylist = async () => {
+		//get the token
+		const token = await APICtrl.getToken();
+		//store the token onto the page
+		UICtrl.storeToken(token);
+		const playlist = await APICtrl.getPlaylist(token);
+		let artists = '';
+		for (let track of playlist.tracks.items) {
+			artists += `${track.track.artists[0].id},`;
 			addEmbed(track.track.id)
-        }
-        
-        artists = artists.slice(0, -1);
-        loadArtists(artists);
-    }
+		}
 
-	function addEmbed (trackID) {
+		artists = artists.slice(0, -1);
+		loadArtists(artists);
+	}
+
+	function addEmbed(trackID) {
 		$('#tracks').prepend(`<iframe src="https://open.spotify.com/embed/track/${trackID}"
 			width="300" height="380" frameborder="0"
 			allowtransparency="true" allow="encrypted-media">
 		</iframe>`)
 	}
 
-	function addAlbumData (data) {
+	function addAlbumData(data) {
 		console.log(data)
 		$('#tracks').prepend(`<div class="dark-bg col bord">
 			<img class="square card-img-top img-fluid pt-5" src="${data.album.images[0].url}" alt="">
@@ -204,30 +185,30 @@ const APPController = (function (UICtrl, APICtrl) {
 		</div>`)
 	}
 
-    function addArtistData (data) {
-        $('#album').prepend(`<div class="flex-column">
+	function addArtistData(data) {
+		$('#album').prepend(`<div class="flex-column">
             <img class="square mx-auto" src="${data.images[0].url}" alt="album cover">
             <h3 class="py-4">${data.name}</h3>
         </div>`);
-    }
+	}
 
-    const loadArtists = async (artistsIDs) => {
-        //get the token
-        const token = await APICtrl.getToken();
-        //store the token onto the page
-        UICtrl.storeToken(token);
-        const artists = await APICtrl.getArtists(token, artistsIDs);
-        for (let artist of artists.artists) {
-            addArtistData(artist);
-        }
+	const loadArtists = async (artistsIDs) => {
+		//get the token
+		const token = await APICtrl.getToken();
+		//store the token onto the page
+		UICtrl.storeToken(token);
+		const artists = await APICtrl.getArtists(token, artistsIDs);
+		for (let artist of artists.artists) {
+			addArtistData(artist);
+		}
 		$('#album').slick(singleCarousel);
-    }
+	}
 
-    return {
-        init() {
-            console.log('App is starting');
-            loadPlaylist();
-        }
-    }
+	return {
+		init() {
+			console.log('App is starting');
+			loadPlaylist();
+		}
+	}
 
 })(UIController, APIController);
