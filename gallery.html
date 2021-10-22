@@ -51,13 +51,16 @@
 
 	<header class="container-fluid dark-bg">
 		<div class="container-lg pb-5">
+			<!-- Navbar -->
 			<nav class="d-flex flex-column flex-sm-row text-center pt-3" id="a11y-primary-nav" tabindex="-1">
+				<!-- Company name/logo -->
 				<div class="d-flex flex-column flex-sm-row col-sm-6">
 					<a href="index.html" aria-label="logo">
 						<img src="images/company_logo.svg" class="mx-2 mt-3" height="50px" width="100px" alt="">
 						<img src="images/company_name.svg" class="mx-2 mt-3" height="40px" width="200px" alt="">
 					</a>
 				</div>
+				<!-- Toggle button/Hamburger menu -->
 				<div class="menubtn d-sm-none mt-4" data-toggle="collapse" data-target="#navbarContent"
 					onclick="this.classList.toggle('active')">
 					<svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 200 200">
@@ -75,6 +78,7 @@
 						</g>
 					</svg>
 				</div>
+				<!-- Internal Nav Links -->
 				<div class="collapse navbar-collapse d-sm-flex" id="navbarContent">
 					<ul class="navbar-nav text-uppercase font-weight-bold flex-sm-row ml-auto mt-3">
 						<li class="navbar-item">
@@ -94,52 +98,14 @@
 
 	<main id="a11y-main-content" tabindex="-1">
 
+		<!-- Album Section -->
 		<section class="container-fluid py-5">
 			<div class="container-lg text-center pb-5">
 				<h1 class="my-5">Successes</h1>
-				<h2 class="lead my-5">Here are just a few of the songs we've produced. If you like what you hear, <a href="booking.html">contact us</a>! We would love to chat with you about your upcoming project.</h2>
-				<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-					<div class="dark-bg col bord">
-						<img class="square card-img-top img-fluid pt-5" src="images/dark_wave.jpg" alt="">
-						<div class="card-body">
-							<h1 class="card-title lead font-weight-bold">El Rio Vista</h1>
-								<img class="rounded-circle" src="images/dark_wave.jpg" height="100rem"
-									width="100rem" alt="">
-									<p class="pt-2 mb-1">Rachel Lewis</p>
-								<p>2021</p>
-						</div>
-					</div>
-					<div class="dark-bg col bord">
-						<img class="square card-img-top img-fluid pt-5" src="images/dark_wave.jpg" alt="">
-						<div class="card-body">
-							<h1 class="card-title lead font-weight-bold">El Rio Vista</h1>
-								<img class="rounded-circle" src="images/dark_wave.jpg" height="100rem"
-									width="100rem" alt="">
-									<p class="pt-2 mb-1">Rachel Lewis</p>
-								<p>2021</p>
-						</div>
-					</div>
-					<div class="dark-bg col bord">
-						<img class="square card-img-top img-fluid pt-5" src="images/dark_wave.jpg" alt="">
-						<div class="card-body">
-							<h1 class="card-title lead font-weight-bold">El Rio Vista</h1>
-								<img class="rounded-circle" src="images/dark_wave.jpg" height="100rem"
-									width="100rem" alt="">
-									<p class="pt-2 mb-1">Rachel Lewis</p>
-								<p>2021</p>
-						</div>
-					</div>
-					<div class="dark-bg col bord">
-						<img class="square card-img-top img-fluid pt-5" src="images/dark_wave.jpg" alt="">
-						<div class="card-body">
-							<h1 class="card-title lead font-weight-bold">El Rio Vista</h1>
-								<img class="rounded-circle" src="images/dark_wave.jpg" height="100rem"
-									width="100rem" alt="">
-									<p class="pt-2 mb-1">Rachel Lewis</p>
-								<p>2021</p>
-						</div>
-					</div>
-				</div>
+				<h2 class="lead my-5">Here are just a few of the songs we've produced. If you like what you hear, <a
+						href="booking.html">contact us</a>! We would love to chat with you about your upcoming project.
+				</h2>
+				<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3" id="tracks"> </div>
 			</div>
 		</section>
 	</main>
@@ -151,24 +117,28 @@
 				<div class="mt-4">
 					<a href="#" aria-label="logo">
 						<img src="images/company_logo.svg" class="mx-2" height="50px" width="100px" alt="">
-						<img src="images/company_name.svg" class="mx-2 d-md-inline-block d-none" height="40px" width="200px" alt="">
+						<img src="images/company_name.svg" class="mx-2 d-md-inline-block d-none" height="40px"
+							width="200px" alt="">
 					</a>
 				</div>
 				<div class="d-flex mt-4">
 					<div class="row">
 						<ul class="list-group list-group-horizontal list-unstyled">
 							<li class="mx-2">
-								<a class="text-decoration-none" href="https://www.facebook.com/HolbertonSchool/" aria-label="Facebook">
+								<a class="text-decoration-none" href="https://www.facebook.com/HolbertonSchool/"
+									aria-label="Facebook">
 									<i class="fa fa-facebook social" aria-hidden="true"></i>
 								</a>
 							</li>
 							<li class="mx-2">
-								<a class="text-decoration-none" href="https://twitter.com/holbertonschool" aria-label="Twitter">
+								<a class="text-decoration-none" href="https://twitter.com/holbertonschool"
+									aria-label="Twitter">
 									<i class="social fa fa-twitter" aria-hidden="true"></i>
 								</a>
 							</li>
 							<li class="mx-2">
-								<a class="text-decoration-none" href="https://www.instagram.com/holbertonschool/" aria-label="Instagram">
+								<a class="text-decoration-none" href="https://www.instagram.com/holbertonschool/"
+									aria-label="Instagram">
 									<i class="social fa fa-instagram" aria-hidden="true"></i>
 								</a>
 							</li>
@@ -184,6 +154,10 @@
 		</div>
 		<p class="text-center small pb-5 mb-0">©El Rio Vista Recording Studio 2021</p>
 	</footer>
+
+	<form action="">
+		<input type="hidden" id='hidden_token'>
+	</form>
 </body>
 
 </html>

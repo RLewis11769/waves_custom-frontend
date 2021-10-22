@@ -311,7 +311,14 @@ footer {
 	border-radius: 0;
 }
 
-/* Form
+/* Gallery
+   ============================= */
+
+iframe {
+	padding: 2rem;
+}
+
+/* Contact
    ============================= */
 
 form .error {

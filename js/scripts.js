@@ -122,17 +122,6 @@ const APIController = (function () {
         return data;
     }
 
-    const _getTrack = async (token, trackID) => {
-        const limit = 10;
-        const result = await fetch(`https://api.spotify.com/v1/tracks/${trackID}?limit=${limit}`, {
-            method: 'GET',
-            headers: { 'Authorization': 'Bearer ' + token }
-        });
-
-        const data = await result.json();
-        return data.name;
-    }
-
     const _getArtists = async (token, artistsIDs) => {
         const result = await fetch(`https://api.spotify.com/v1/artists?ids=${artistsIDs}`, {
             method: 'GET',
@@ -149,9 +138,6 @@ const APIController = (function () {
         },
         getPlaylist(token) {
             return _getPlaylist(token);
-        },
-        getTrack(token, playlistId) {
-            return _getTrack(token, playlistId);
         },
         getArtists(token, artists_ids) {
             return _getArtists(token, artists_ids);
@@ -190,19 +176,33 @@ const APPController = (function (UICtrl, APICtrl) {
         let artists = '';
         for (let track of playlist.tracks.items) {
             artists += `${track.track.artists[0].id},`;
+			addEmbed(track.track.id)
         }
         
         artists = artists.slice(0, -1);
         loadArtists(artists);
     }
 
-    const loadTrack = async (trackID) => {
-        //get the token
-        const token = await APICtrl.getToken();
-        //store the token onto the page
-        UICtrl.storeToken(token);
-        const track = await APICtrl.getTrack(token, trackID);
-    }
+	function addEmbed (trackID) {
+		$('#tracks').prepend(`<iframe src="https://open.spotify.com/embed/track/${trackID}"
+			width="300" height="380" frameborder="0"
+			allowtransparency="true" allow="encrypted-media">
+		</iframe>`)
+	}
+
+	function addAlbumData (data) {
+		console.log(data)
+		$('#tracks').prepend(`<div class="dark-bg col bord">
+			<img class="square card-img-top img-fluid pt-5" src="${data.album.images[0].url}" alt="">
+			<div class="card-body">
+				<h1 class="card-title lead font-weight-bold">${data.name}</h1>
+				<img class="rounded-circle" src="images/dark_wave.jpg" height="100rem" width="100rem"
+					alt="">
+				<h2 class="pt-2 mb-1 lead">${data.artists[0].name}</h2>
+				<p class="pt-2 mb-1">${data.album.name}</p>
+			</div>
+		</div>`)
+	}
 
     function addArtistData (data) {
         $('#album').prepend(`<div class="flex-column">
