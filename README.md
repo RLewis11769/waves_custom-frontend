@@ -29,7 +29,7 @@ The site consists of 3 pages:
 - Gallery page (gallery.html)
 - Contact page (contact.html)
 
-A detailed explanation of design choices and fun elements on each page can be found [here](). Some features are summarized below in the Features section.
+A detailed explanation of design choices and fun elements on each page can be found [here](https://github.com/RLewis11769/waves_custom-frontend/blob/main/pitch.md). Some features are summarized below in the Features section.
 
 This website integrates the following components as required:
 - CSS Framework (specifically Bootstrap)
@@ -38,7 +38,7 @@ This website integrates the following components as required:
 		- [slick](https://kenwheeler.github.io/slick/) - carousels made easy
 		- [jQuery Validation](https://jqueryvalidation.org/) - form validation made easy
 - Utilizing a third-party API (specifically [Spotify](https://developer.spotify.com/))
-- Accessibility (checked with [axe Dev Tools](https://www.deque.com/axe/devtools/) - issues are manual review for sufficient color contrast of text against images)
+- Accessibility (checked with [axe Dev Tools](https://www.deque.com/axe/devtools/) - issues are manual review for sufficient color contrast of text)
 - Forms (form submits and info is lost forever - no backend storage system or cookies implemented)
 
 ## Installation
