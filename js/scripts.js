@@ -179,7 +179,7 @@ const APPController = (function (UICtrl, APICtrl) {
 		// 2. Add embedded track on gallery page
 		for (let track of playlist.tracks.items) {
 			artists += `${track.track.artists[0].id},`;
-			addEmbed(track.track.id)
+			addEmbed(track.track)
 		}
 
 		// Slice off final comma and send entire string to function
@@ -202,11 +202,12 @@ const APPController = (function (UICtrl, APICtrl) {
 		$('#album').slick(singleCarousel);
 	}
 
-	function addEmbed(trackID) {
+	function addEmbed(track) {
 		// Add iframe/30-sec embedded track for each track in playlist
-		$('#tracks').prepend(`<iframe src="https://open.spotify.com/embed/track/${trackID}"
+		$('#tracks').prepend(`<iframe src="https://open.spotify.com/embed/track/${track.id}"
 			width="300" height="380" frameborder="0"
-			allowtransparency="true" allow="encrypted-media">
+			allowtransparency="true" allow="encrypted-media"
+			title="Embedded song ${track.name} by ${track.artists[0].name}">
 		</iframe>`)
 	}
 
