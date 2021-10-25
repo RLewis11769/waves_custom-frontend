@@ -1,11 +1,14 @@
 $(document).ready(function () {
 
-	// Execute background change on header/hero banner every 5 seconds
+	// Set background as first image (setInterval won't happen for 5 seconds)
 	changeBG();
+	// Execute background change on header/hero banner every 5 seconds
 	setInterval(changeBG, 5000);
 
 	// Add validation to form on "contact" page
 	validateForm();
+	// Add "enter" to submit form also - would be where save data
+	submitForm();
 
 	// Initialize methods for interacting with API
 	APPController.init();
@@ -24,10 +27,12 @@ const singleCarousel = {
 
 
 // Global variables for changeBG function
-const images = ['hero1', 'hero2', 'hero3'];
 let classIndex = -1;
 
-function changeBG() {
+function changeBG () {
+
+	const images = ['hero1', 'hero2', 'hero3'];
+
 	// Change background image in hero section
 	let hero = $('#hero');
 
@@ -42,17 +47,30 @@ function changeBG() {
 }
 
 
-function validateForm() {
+function submitForm () {
+	// Makes sure able to enter via keyboard for accessability reasons
+	$('#submit').click(() => {
+		// Filler data to occur on form submit/enter
+		console.log('click')
+	});
+
+	// If user presses "enter" in input field, same as button click and will trigger search
+	$('textarea').keypress(function (e) {
+		if (e.which === 13) {
+			$('#submit').click();
+		}
+	});
+}
+
+
+function validateForm () {
 	// Add validation via jQuery Validate
 	$('form').validate({
 		rules: {
 			// Define rules to be validated for each "name" in form
 			first: 'required',
 			last: 'required',
-			phone: {
-				required: true,
-				tel: true
-			},
+			phone: 'required',
 			email: {
 				required: true,
 				email: true
@@ -62,10 +80,7 @@ function validateForm() {
 		messages: {
 			first: 'Please enter a valid name',
 			last: 'Please enter a valid name',
-			phone: {
-				required: 'Please enter a phone number',
-				tel: 'Please enter a valid phone number'
-			},
+			phone: 'Please enter a valid phone number',
 			email: {
 				required: 'Please enter an email',
 				email: 'Please enter a valid email'
@@ -177,11 +192,10 @@ const APPController = (function (UICtrl, APICtrl) {
 		// Do two things for each track in playlist:
 		// 1. Add artist to artists string for slideshow on homepage
 		// 2. Add embedded track on gallery page
-		for (let track = 0; track < 12; track ++) {
+		for (let track = 0; track < 12; track++) {
 			artists += `${playlist.tracks.items[track].track.artists[0].id},`;
 			addEmbed(playlist.tracks.items[track].track);
 		}
-		console.log(artists);
 
 		// Slice off final comma and send entire string to function
 		loadArtists(artists.slice(0, -1));
