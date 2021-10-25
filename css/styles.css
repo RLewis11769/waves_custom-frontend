@@ -52,8 +52,8 @@ body {
 /* Buttons */
 
 button {
-	background-color: var(--color-pop)!important;
-	color: var(--color-white)!important;
+	background-color: var(--color-pop) !important;
+	color: var(--color-white) !important;
 	border: none;
 	display: block;
 	margin-left: auto;
@@ -74,7 +74,7 @@ a:hover, a:focus {
 /* Colors */
 
 .wave {
-	color: var(--color-pop)!important;
+	color: var(--color-pop) !important;
 }
 
 .dark-bg {
@@ -220,10 +220,14 @@ footer {
 }
 
 .fa-facebook {
-	padding: 0.2rem 0.7rem;
+	padding: 0.2rem 0.6rem;
 }
 
-.fa-twitter, .fa-instagram, .fa-spotify {
+.fa-twitter {
+	padding: 0.2rem 0.3rem;
+}
+
+.fa-instagram, .fa-spotify {
 	padding: 0.2rem 0.4rem;
 }
 
@@ -310,7 +314,7 @@ footer {
 }
 
 .bord {
-	border: 0.5rem solid var(--color-primary)!important;
+	border: 0.5rem solid var(--color-primary) !important;
 	border-radius: 0;
 }
 
@@ -325,7 +329,7 @@ iframe {
    ============================= */
 
 form .error {
-	color: var(--color-pop)!important;
+	color: var(--color-pop) !important;
 	position: relative;
 	top: 0.2rem;
 }

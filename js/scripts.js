@@ -177,10 +177,11 @@ const APPController = (function (UICtrl, APICtrl) {
 		// Do two things for each track in playlist:
 		// 1. Add artist to artists string for slideshow on homepage
 		// 2. Add embedded track on gallery page
-		for (let track of playlist.tracks.items) {
-			artists += `${track.track.artists[0].id},`;
-			addEmbed(track.track)
+		for (let track = 0; track < 12; track ++) {
+			artists += `${playlist.tracks.items[track].track.artists[0].id},`;
+			addEmbed(playlist.tracks.items[track].track);
 		}
+		console.log(artists);
 
 		// Slice off final comma and send entire string to function
 		loadArtists(artists.slice(0, -1));
